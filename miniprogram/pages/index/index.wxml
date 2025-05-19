@@ -1,0 +1,74 @@
+<view class="container">
+  <view class="header">
+    <text class="title">创建角色</text>
+  </view>
+  
+  <view class="content">
+    <!-- 头像上传区域 -->
+    <view class="avatar-section">
+      <image class="avatar" src="{{userInfo.avatarUrl || 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'}}" mode="aspectFill"></image>
+      <button class="upload-btn" bindtap="chooseAvatar">更换头像</button>
+    </view>
+
+    <!-- 昵称输入区域 -->
+    <view class="input-section">
+      <text class="label">昵称</text>
+      <input class="input" type="text" value="{{userInfo.nickName}}" placeholder="请输入昵称" bindinput="onNicknameInput"/>
+    </view>
+
+    <!-- 性别选择区域 -->
+    <view class="input-section">
+      <text class="label">性别</text>
+      <radio-group class="radio-group" bindchange="onGenderChange">
+        <label class="radio-label" wx:for="{{genderOptions}}" wx:key="value">
+          <radio value="{{item.value}}" checked="{{item.value === userInfo.gender}}"/>{{item.label}}
+        </label>
+      </radio-group>
+    </view>
+
+    <!-- MBTI选择区域 -->
+    <view class="input-section">
+      <text class="label">MBTI性格</text>
+      <view class="mbti-grid">
+        <view class="mbti-item {{item.selected ? 'selected' : ''}}" 
+              wx:for="{{mbtiOptions}}" 
+              wx:key="value"
+              bindtap="onMbtiSelect"
+              data-value="{{item.value}}">
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 个人特质选择区域 -->
+    <view class="input-section">
+      <text class="label">个人特质</text>
+      <view class="tags-container">
+        <view class="tag {{item.selected ? 'selected' : ''}}" 
+              wx:for="{{personalityTags}}" 
+              wx:key="value"
+              bindtap="onTagSelect"
+              data-value="{{item.value}}">
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 兴趣爱好选择区域 -->
+    <view class="input-section">
+      <text class="label">兴趣爱好</text>
+      <view class="tags-container">
+        <view class="tag {{item.selected ? 'selected' : ''}}" 
+              wx:for="{{hobbyTags}}" 
+              wx:key="value"
+              bindtap="onHobbySelect"
+              data-value="{{item.value}}">
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button class="submit-btn" bindtap="submitProfile">完成创建</button>
+  </view>
+</view> 
