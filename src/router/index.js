@@ -28,7 +28,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory('zoou192.github.io'),
+  history: createWebHashHistory(),
   routes
 })
 
