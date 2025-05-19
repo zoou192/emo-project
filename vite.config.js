@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/zoou192.github.io/',
+  base: '/',
   plugins: [vue()],
   resolve: {
     alias: {
