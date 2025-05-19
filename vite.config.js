@@ -33,7 +33,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vue': ['vue'],
           'element-plus': ['element-plus']
         },
         format: 'es',
