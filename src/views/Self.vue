@@ -384,8 +384,7 @@ const closeBottomPanel = () => {
       <!-- @click="openBottomPanel('entries')"  @click="openBottomPanel('stats')"  @click="openBottomPanel('stats')"-->
       <!-- 负面情绪安抚组件 -->
       <div v-if="emotionBottles.length > 0"
-           class="comfort-section"
-           :style="isPositiveEmotion ? 'background: linear-gradient(to bottom, rgba(255,152,0,0.08) 0%, rgba(255,243,224,0.02) 100%)' : ''">
+           class="comfort-section">
         <div class="collection-data-container">
           <div class="card-item">
             <div class="card-icon-label-row">
@@ -962,8 +961,9 @@ const closeBottomPanel = () => {
 }
 
 .volume-slider {
-  flex: 1;
   -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
   height: 4px;
   border-radius: 2px;
   background: linear-gradient(to right, #2196F3, rgba(33, 150, 243, 0.3));
@@ -971,7 +971,6 @@ const closeBottomPanel = () => {
 }
 
 .volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
   width: 16px;
   height: 16px;
   border-radius: 50%;

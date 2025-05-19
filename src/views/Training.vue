@@ -215,7 +215,7 @@ const finishTraining = () => {
 
 .message-content {
   padding: 0.8rem 1.2rem;
-  border-radius: 15px;
+  border-radius: 12px;
   background: #e3f2fd;
   color: #1976d2;
 }

@@ -2,7 +2,7 @@
   <div class="onboarding">
     <div class="header-container">
       <div class="left-content">
-        <h1>Ego<span class="ego-subtitle">_情绪盒子</span></h1>
+        <h1>Ego</h1>
         <div class="slogan">每个自我，都是未完成的拼图<br>第 <span class="number-container">
           <span class="number" :key="randomNumber">{{ randomNumber }}</span>
         </span> 个人格生成中...</div>
@@ -10,7 +10,7 @@
       <div class="grid-container">
         <div 
           class="grid-item" 
-          v-for="i in 9" 
+          v-for="i in 4" 
           :key="i"
           :class="{
             'active': i === currentStep + 1,
@@ -30,7 +30,7 @@
           <div class="dots-container">
             <div 
               class="dot" 
-              v-for="i in 9" 
+              v-for="i in questions.length" 
               :key="i"
               :class="{
                 'completed': i < currentStep + 1,
@@ -96,7 +96,7 @@
         @click="handleNextStep"
         :disabled="!canProceed"
       >
-        <span>{{ currentStep === questions.length - 1 ? '探索自我' : '下一题' }}</span>
+        <span>{{ currentStep === questions.length - 1 ? '开始收集' : '下一题' }}</span>
       </button>
     </div>
 
@@ -139,93 +139,56 @@ onMounted(() => {
   console.log('Onboarding 组件已挂载')
   // 生成1000-9999之间的随机数
   randomNumber.value = Math.floor(Math.random() * 9000) + 1000
-  
-  // 生成9个交替的图形
+  // 生成4个交替的图形
   const shapeTypes = ['spade', 'heart', 'club', 'diamond']
-  const grid = Array(9).fill(null)
-  
-  // 为每个位置生成交替的图形
-  for (let i = 0; i < 9; i++) {
+  const grid = Array(4).fill(null)
+  for (let i = 0; i < 4; i++) {
     grid[i] = shapeTypes[i % 4]
   }
-  
   shapes.value = grid
 })
 
 const questions = [
+
+
   {
-    title: '🔌 你的「社交充电」方式是',
+    title: '🌌 你更易被哪种世界观治愈？',
     options: [
-      { label: '朋友聚会后元气满满', value: 'A' },
-      { label: '独处才能回血', value: 'B' }
+      { label: '赛博朋克都市', value: 'A' },
+      { label: '魔法森林', value: 'B' },
+      { label: '宇宙航行', value: 'C' },
+      { label: '童话王国', value: 'D' }
+    ]
+  },
+
+
+  {
+    title: '🤖 现在你的身体感觉更像？',
+    options: [
+      { label: '电力耗尽的机器人', value: 'A' },
+      { label: '随风飘摇的树叶', value: 'B' },
+      { label: '即将喷发的火山', value: 'C' },
+      { label: '闪烁的星尘', value: 'D' }
     ]
   },
   {
-    title: '⚖️ 你更依赖哪种决策模式',
-    options: [
-      { label: '跟着感觉走，自己喜欢最好', value: 'A' },
-      { label: '必须列清单，一个个完成才是王道', value: 'B' }
-    ]
-  },
-  {
-    title: '⏳ 当朋友多次爽约，你会',
-    options: [
-      { label: '直接问"你是不是不重视我？"', value: 'A' },
-      { label: '发个"等得花都谢了"表情包', value: 'B' },
-      { label: '默默取消下次约定', value: 'C' }
-    ]
-  },
-  {
-    title: '📮 最让你头大的表达形式是',
-    options: [
-      { label: '纯文字小作文', value: 'A' },
-      { label: '60 秒语音方阵', value: 'B' },
-      { label: '没有表情包的对话', value: 'C' }
-    ]
-  },
-  {
-    title: '🔥 你最想攻克的 3 个场景是',
+    title: '🌊 近让你情绪波动的事件通常发生在？',
     multiple: true,
     options: [
-      { label: '被同事当众质疑', value: 'A' },
-      { label: '相亲冷场窒息时刻', value: 'B' },
-      { label: '拒绝朋友借钱', value: 'C' },
-      { label: '家族群长辈说教', value: 'D' }
+      { label: '工作/学习场景', value: 'A' },
+      { label: '家庭关系', value: 'B' },
+      { label: '社交互动', value: 'C' },
+      { label: '自我成长', value: 'D' },
+      { label: '随机日常', value: 'E' }
     ]
   },
   {
-    title: '🎭 当我说错话时，最希望别人觉得我',
+    title: '🌟 你希望树洞守护者用哪种方式回应？',
     options: [
-      { label: '幽默感救场王', value: 'A' },
-      { label: '真诚但笨拙', value: 'B' },
-      { label: '根本不在意', value: 'C' }
-    ]
-  },
-  {
-    title: '🕵️ 当对方说"我现在挺忙的，晚点聊"，你认为潜在含义是',
-    options: [
-      { label: '真在忙，稍后会主动找你', value: 'A' },
-      { label: '委婉终止对话', value: 'B' },
-      { label: '等你给出明确沟通价值', value: 'C' }
-    ]
-  },
-  {
-    title: '⚠️ 最让你感到焦虑的 3 个关键词是',
-    multiple: true,
-    options: [
-      { label: '被比较', value: 'A' },
-      { label: '必须回应', value: 'B' },
-      { label: '客套话', value: 'C' },
-      { label: '冷场', value: 'D' }
-    ]
-  },
-  {
-    title: '🚀 你希望成为怎样的自己？',
-    options: [
-      { label: '职场沟通高手', value: 'A' },
-      { label: '亲密关系达人', value: 'B' },
-      { label: '社交恐惧免疫者', value: 'C' },
-      { label: '全能控场王', value: 'D' }
+      { label: '毒舌但治愈的吐槽', value: 'A' },
+      { label: '充满想象力的故事', value: 'B' },
+      { label: '温柔肯定的鼓励', value: 'C' },
+      { label: '提供解决攻略', value: 'D' }
     ]
   }
 ]
@@ -254,7 +217,7 @@ const personalityResult = computed(() => {
   
   // 简单算法：根据第一题和最后一题的答案选择人格
   const firstAnswer = answers[0]
-  const lastAnswer = answers[8]
+  const lastAnswer = answers[3]
   const index = (firstAnswer?.charCodeAt(0) || 0 + lastAnswer?.charCodeAt(0) || 0) % personalities.length
   return personalities[index]
 })
@@ -369,8 +332,9 @@ const startChat = () => {
   }
 
   .grid-container {
-    width: 88px;
-    margin-top: 20px;
+    width: 72px;
+    height: 72px;
+    margin-top: 0px;
     margin-left: auto;
   }
 
@@ -408,7 +372,8 @@ const startChat = () => {
   }
 
   .grid-container {
-    width: 88px;
+    width: 72px;
+    height: 72px;
     margin-left: 20px;
   }
 
@@ -484,14 +449,14 @@ h1 {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 3px;
-  width: 80px;
-  height: 80px;
-  aspect-ratio: 1/1;
-  border-radius: 8px;
-  padding: 2px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 4px;
+  width: 76px;
+  height: 76px;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  padding: 4px;
   box-sizing: border-box;
   position: relative;
   margin-left: 20px;
@@ -958,22 +923,22 @@ h1 {
 
 .shape.spade::before {
   content: '♠';
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .shape.heart::before {
   content: '♥';
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .shape.club::before {
   content: '♣';
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .shape.diamond::before {
   content: '♦';
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .grid-item.active .shape {
@@ -1158,5 +1123,18 @@ h1 {
   line-height: 1.5;
   text-align: center;
   max-width: 200px;
+}
+
+.grid-item.completed .shape-container {
+  background: #B2FFED;
+}
+
+.message.user {
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.comfort-section {
+  background: linear-gradient(to bottom, rgba(17,17,17,0.03) 0%, rgba(17,17,17,0) 100%);
 }
 </style> 
