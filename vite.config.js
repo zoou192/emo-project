@@ -4,7 +4,6 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/emo-project/',
   plugins: [vue()],
   resolve: {
     alias: {
@@ -35,11 +34,7 @@ export default defineConfig({
         manualChunks: {
           'vue': ['vue'],
           'element-plus': ['element-plus']
-        },
-        format: 'es',
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        }
       }
     }
   }
