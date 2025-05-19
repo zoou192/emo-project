@@ -41,5 +41,8 @@ export default defineConfig({
         assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     }
+  },
+  optimizeDeps: {
+    include: ['vue', 'vue-router', '@vueuse/motion']
   }
 })
