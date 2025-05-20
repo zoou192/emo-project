@@ -913,6 +913,7 @@ const closeBottomPanel = () => {
 }
 
 .player-title {
+  text-align: left;
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
@@ -1017,6 +1018,7 @@ const closeBottomPanel = () => {
 }
 
 .player-title {
+  text-align: left;
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
