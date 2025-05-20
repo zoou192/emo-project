@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 // 直接导入组件，不使用懒加载
 import Onboarding from '../views/Onboarding.vue'
 import Chat from '../views/Chat.vue'
@@ -27,7 +27,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 
