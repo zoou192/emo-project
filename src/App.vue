@@ -11,7 +11,10 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created() {
+    document.title = 'Ego_情绪盒子'
+  }
 }
 </script>
 
@@ -33,8 +36,8 @@ export default {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
-  margin: 0 15px;
-  padding: 5px 10px;
+  margin: 0px;
+  padding: 0px;
   border-radius: 4px;
 }
 
