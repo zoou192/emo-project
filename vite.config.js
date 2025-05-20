@@ -3,10 +3,12 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 
 export default defineConfig({
+  base: './',
   plugins: [vue()],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      'vue': 'vue/dist/vue.esm-bundler.js'
     },
   },
   server: {
@@ -31,5 +33,15 @@ export default defineConfig({
         drop_debugger: true,
       },
     },
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vue': ['vue'],
+          'vue-router': ['vue-router'],
+          'pinia': ['pinia']
+        }
+      }
+    }
   },
 }) 
