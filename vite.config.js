@@ -33,16 +33,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
+          'vue': ['vue'],
           'element-plus': ['element-plus']
-        },
-        format: 'es',
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        }
       }
     }
-  },
-  optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/motion']
   }
 })

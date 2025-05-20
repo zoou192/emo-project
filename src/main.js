@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import { MotionPlugin } from '@vueuse/motion'
 import './style.css'
 
 console.log('开始初始化应用')
@@ -12,9 +11,6 @@ console.log('Vue 应用已创建')
 
 app.use(router)
 console.log('路由已配置')
-
-app.use(MotionPlugin)
-console.log('Motion 插件已配置')
 
 // 添加全局错误处理
 app.config.errorHandler = (err, vm, info) => {
