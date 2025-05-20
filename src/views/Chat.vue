@@ -1530,7 +1530,7 @@ watch(messages, (newVal) => {
 
 .nav-left {
   display: flex;
-  gap: 24px;
+  gap: 0px;
 }
 
 .nav-item {

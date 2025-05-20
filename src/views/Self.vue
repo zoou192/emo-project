@@ -292,7 +292,7 @@ onMounted(() => {
   }
   
   // 从localStorage获取情绪瓶数据
-  const savedEmotionBottles = localStorage.getItem('emotionBottles') || '["happy"]'
+  const savedEmotionBottles = localStorage.getItem('emotionBottles')
   
   if (savedEmotionBottles) {
     emotionBottles.value = JSON.parse(savedEmotionBottles)
@@ -362,7 +362,7 @@ const closeBottomPanel = () => {
     </div>
     
     <div class="self-content">
-      <div class="user-profile">
+      <!-- <div class="user-profile">
         <div class="avatar">
           <img :src="personalityResult.avatar" alt="用户头像">
         </div>
@@ -374,7 +374,7 @@ const closeBottomPanel = () => {
             </span>
           </div>
         </div>
-      </div>
+      </div> -->
       
       <!-- 情绪收集信息 -->
       <div class="emotion-collection">
@@ -384,7 +384,7 @@ const closeBottomPanel = () => {
       </div>
       <!-- @click="openBottomPanel('entries')"  @click="openBottomPanel('stats')"  @click="openBottomPanel('stats')"-->
       <!-- 负面情绪安抚组件 -->
-      <div v-if="emotionBottles.length > 0"
+      <div
            class="comfort-section">
         <div class="collection-data-container">
           <div class="card-item">
@@ -551,7 +551,7 @@ const closeBottomPanel = () => {
 
 .nav-left {
   display: flex;
-  gap: 24px;
+  gap: 0px;
 }
 
 .nav-item {
