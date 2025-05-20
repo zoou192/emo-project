@@ -13,6 +13,7 @@
 export default {
   name: 'App',
   created() {
+    // 立即设置标题
     document.title = 'Ego_情绪盒子'
   }
 }

@@ -39,11 +39,4 @@ const router = createRouter({
   }
 });
 
-// 全局前置守卫
-router.beforeEach((to, from, next) => {
-  // 设置页面标题
-  document.title = to.meta.title || 'Ego_情绪盒子';
-  next();
-});
-
 export default router; 
