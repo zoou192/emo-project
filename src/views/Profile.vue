@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const profile = ref({
-  avatar: '/images/default-avatar.svg',
+  avatar: '../../images/default-avatar.svg',
   nickname: '',
   selectedTags: []
 })

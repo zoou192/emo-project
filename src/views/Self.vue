@@ -15,7 +15,7 @@ const switchTab = (tab) => {
 const personalityResult = ref({
   name: '元气魔法师',
   description: '聚会时用幽默打破沉默，拉近关系',
-  avatar: '/images/yqmfs.png',
+  avatar: '../../images/yqmfs.png',
   traits: ['聚会能量', '社交魔法', '幽默化解', '亲密关系']
 })
 
@@ -378,7 +378,7 @@ const closeBottomPanel = () => {
       <!-- 情绪收集信息 -->
       <div class="emotion-collection">
         <div class="collection-header">
-          <img src="/images/bottle.png" alt="情绪瓶" class="bottle-image">
+          <img src="../../images/bottle.png" alt="情绪瓶" class="bottle-image">
         </div>
       </div>
       <!-- @click="openBottomPanel('entries')"  @click="openBottomPanel('stats')"  @click="openBottomPanel('stats')"-->
