@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath : '/'
+    publicPath: './'
   },
   module: {
     rules: [
@@ -65,7 +65,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       templateParameters: {
-        BASE_URL: process.env.NODE_ENV === 'production' ? '/emo/' : '/'
+        BASE_URL: './'
       }
     })
   ],
