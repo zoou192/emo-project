@@ -1,10 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import defaultAvatar from '../assets/images/default-avatar.svg'
 
 const router = useRouter()
 const profile = ref({
-  avatar: '../../public/images/default-avatar.svg',
+  avatar: defaultAvatar,
   nickname: '',
   selectedTags: []
 })

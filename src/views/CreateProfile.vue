@@ -140,7 +140,7 @@ const goToNextStep = () => {
             :class="{ active: gender === 'male' }"
             @click="gender = 'male'"
           >
-            <img src="../assets/boy.png" alt="男" class="gender-icon">
+            <img src="../assets/images/boy.png" alt="男" class="gender-icon">
             <span>男生</span>
           </div>
           <div 
@@ -148,7 +148,7 @@ const goToNextStep = () => {
             :class="{ active: gender === 'female' }"
             @click="gender = 'female'"
           >
-            <img src="../assets/girl.png" alt="女" class="gender-icon">
+            <img src="../assets/images/girl.png" alt="女" class="gender-icon">
             <span>女生</span>
           </div>
         </div>

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import yqmfsAvatar from '../assets/images/yqmfs.png'
 
 const router = useRouter()
 const activeTab = ref('self')
@@ -15,7 +16,7 @@ const switchTab = (tab) => {
 const personalityResult = ref({
   name: '元气魔法师',
   description: '聚会时用幽默打破沉默，拉近关系',
-  avatar: '../../public/images/yqmfs.png',
+  avatar: yqmfsAvatar,
   traits: ['聚会能量', '社交魔法', '幽默化解', '亲密关系']
 })
 
@@ -378,7 +379,7 @@ const closeBottomPanel = () => {
       <!-- 情绪收集信息 -->
       <div class="emotion-collection">
         <div class="collection-header">
-          <img src="../../public/images/bottle.png" alt="情绪瓶" class="bottle-image">
+          <img src="../assets/images/bottle.png" alt="情绪瓶" class="bottle-image">
         </div>
       </div>
       <!-- @click="openBottomPanel('entries')"  @click="openBottomPanel('stats')"  @click="openBottomPanel('stats')"-->
@@ -421,7 +422,7 @@ const closeBottomPanel = () => {
             <div class="now-playing">
               <div class="player-content">
                 <div class="cd-container" :class="{ 'rotating': isPlaying }">
-                  <img src="../../public/images/cd.webp" alt="CD" class="cd-image">
+                  <img src="../assets/images/cd.webp" alt="CD" class="cd-image">
                 </div>
                 <div class="player-info">
                   <div class="player-title">

@@ -5,6 +5,8 @@
     <router-link to="/chat" class="start-button">
       开始体验
     </router-link>
+    <img src="@/images/welcome-bg.png" alt="Welcome Background" />
+    <img src="@/images/welcome-icon.png" alt="Welcome Icon" />
   </div>
 </template>
 

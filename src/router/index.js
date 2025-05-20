@@ -1,5 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-
+import { createRouter, createWebHistory } from 'vue-router'
 // 直接导入组件，不使用懒加载
 import Onboarding from '../views/Onboarding.vue'
 import Chat from '../views/Chat.vue'
@@ -28,14 +27,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
-})
-
-// 添加导航守卫进行调试
-router.beforeEach((to, from, next) => {
-  console.log('路由导航:', { to, from })
-  next()
 })
 
 export default router 

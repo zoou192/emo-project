@@ -2,15 +2,21 @@
 import { ref, onMounted, nextTick, watch, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import MarkdownIt from 'markdown-it'
+import lifeIcon from '../assets/images/生活.svg'
+import socialIcon from '../assets/images/社交.svg'
+import workIcon from '../assets/images/工作.svg'
+import yqmfsAvatar from '../assets/images/yqmfs.png'
+import sendSelectIcon from '../assets/images/send_select.svg'
+import sendNormalIcon from '../assets/images/send_normal.svg'
 
 const router = useRouter()
 const activeTab = ref('chat')
 const selectedScenario = ref('life') // 默认选中生活场景
 
 const scenarios = [
-  { id: 'life', name: '生活琐事', icon: '../../public/images/生活.svg' },
-  { id: 'social', name: '人际交往', icon: '../../public/images/社交.svg' },
-  { id: 'work', name: '工作日常', icon: '../../public/images/工作.svg' }
+  { id: 'life', name: '生活琐事', icon: lifeIcon },
+  { id: 'social', name: '人际交往', icon: socialIcon },
+  { id: 'work', name: '工作日常', icon: workIcon }
 ]
 
 const switchTab = (tab) => {
@@ -33,7 +39,7 @@ const currentStream = ref(null)
 const personalityResult = ref({
   name: '元气魔法师',
   description: '聚会时用幽默打破沉默，拉近关系',
-  avatar: '../../public/images/yqmfs.png',
+  avatar: yqmfsAvatar,
   traits: ['聚会能量', '社交魔法', '幽默化解', '亲密关系']
 })
 const userAnswers = ref(null)
@@ -1452,9 +1458,9 @@ watch(messages, (newVal) => {
           :disabled="isThinking || !newMessage.trim()"
         >
           <img 
-            :src="inputActive ? '../../public/images/send_select.svg' : '../../public/images/send_normal.svg'"
+            :src="inputActive ? sendSelectIcon : sendNormalIcon"
             alt="发送"
-            style="width: 24px; height: 24px;"
+            class="send-icon"
           >
         </button>
       </div>
