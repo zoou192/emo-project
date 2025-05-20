@@ -1,28 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import Contact from '../views/Contact.vue';
 import Self from '../views/Self.vue'
 
 const routes = [
   {
     path: '/',
     redirect: '/onboarding'
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About
-  },
-  {
-    path: '/contact',
-    name: 'Contact',
-    component: Contact
   },
   {
     path: '/onboarding',
@@ -60,7 +42,7 @@ const router = createRouter({
 // 全局前置守卫
 router.beforeEach((to, from, next) => {
   // 设置页面标题
-  document.title = to.meta.title || 'EMO';
+  document.title = to.meta.title || 'Ego_情绪盒子';
   next();
 });
 
