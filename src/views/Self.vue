@@ -82,14 +82,19 @@ const emotionBottles = ref([]);
 // 计算情绪统计数据
 const emotionStats = computed(() => {
   const stats = {};
-  emotionBottles.value.forEach(entry => {
-    stats[entry.emotion] = (stats[entry.emotion] || 0) + 1;
-  });
+  if (emotionBottles.value && emotionBottles.value.length > 0) {
+    emotionBottles.value.forEach(entry => {
+      stats[entry.emotion] = (stats[entry.emotion] || 0) + 1;
+    });
+  }
   return stats;
 });
 
 const getMostFrequentEmotion = () => {
   const stats = emotionStats.value;
+  if (Object.keys(stats).length === 0) {
+    return '暂无';
+  }
   let mostFrequent = null;
   let maxCount = 0;
   for (const emotion in stats) {
@@ -292,10 +297,17 @@ onMounted(() => {
   }
   
   // 从localStorage获取情绪瓶数据
-  const savedEmotionBottles = localStorage.getItem('emotionBottles') || '["happy"]'
+  const savedEmotionBottles = localStorage.getItem('emotionBottles')
   
   if (savedEmotionBottles) {
-    emotionBottles.value = JSON.parse(savedEmotionBottles)
+    try {
+      const parsedBottles = JSON.parse(savedEmotionBottles)
+      emotionBottles.value = Array.isArray(parsedBottles) ? parsedBottles : []
+    } catch (e) {
+      emotionBottles.value = []
+    }
+  } else {
+    emotionBottles.value = []
   }
   
   // 初始化音量和默认选中音乐
@@ -362,20 +374,6 @@ const closeBottomPanel = () => {
     </div>
     
     <div class="self-content">
-      <div class="user-profile">
-        <div class="avatar">
-          <img :src="personalityResult.avatar" alt="用户头像">
-        </div>
-        <div class="info">
-          <div class="name">{{ personalityResult.name }}</div>
-          <div class="traits">
-            <span v-for="trait in randomTraits" :key="trait" class="trait-tag">
-              {{ trait }}
-            </span>
-          </div>
-        </div>
-      </div>
-      
       <!-- 情绪收集信息 -->
       <div class="emotion-collection">
         <div class="collection-header">
@@ -384,8 +382,7 @@ const closeBottomPanel = () => {
       </div>
       <!-- @click="openBottomPanel('entries')"  @click="openBottomPanel('stats')"  @click="openBottomPanel('stats')"-->
       <!-- 负面情绪安抚组件 -->
-      <div v-if="emotionBottles.length > 0"
-           class="comfort-section">
+      <div class="comfort-section">
         <div class="collection-data-container">
           <div class="card-item">
             <div class="card-icon-label-row">
@@ -562,6 +559,9 @@ const closeBottomPanel = () => {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   outline: none;
+  border-radius: 4px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .nav-item.active {
@@ -590,66 +590,12 @@ const closeBottomPanel = () => {
   z-index: 1;
 }
 
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0;
-  margin-bottom: 24px;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #f0f0f0;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.info {
-  flex: 1;
-}
-
-.name {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111;
-  margin-bottom: 8px;
-}
-
-.traits {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 8px;
-  overflow: hidden;
-}
-
-.trait-tag {
-  font-size: 12px;
-  color: #666;
-  background: rgba(17, 17, 17, 0.03);
-  padding: 0 8px;
-  height: 24px;
-  line-height: 24px;
-  border-radius: 8px;
-  white-space: nowrap;
-}
-
 .emotion-collection {
-  padding: 0;
+  padding: 40px 0 40px;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
 }
 
 .collection-header {
@@ -799,7 +745,7 @@ const closeBottomPanel = () => {
   padding: 16px;
   background: linear-gradient(to bottom, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.03));
   border-radius: 16px;
-  margin-top: 16px;
+  margin-top: 10px;
 }
 
 .comfort-message {
@@ -916,6 +862,7 @@ const closeBottomPanel = () => {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
+  text-align: left;
 }
 
 .player-controls {
@@ -1020,6 +967,7 @@ const closeBottomPanel = () => {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
+  text-align: left;
 }
 
 .rotating {

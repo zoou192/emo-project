@@ -1541,6 +1541,9 @@ watch(messages, (newVal) => {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   outline: none;
+  border-radius: 4px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .nav-item.active {
