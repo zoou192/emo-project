@@ -421,7 +421,7 @@ const closeBottomPanel = () => {
             <div class="now-playing">
               <div class="player-content">
                 <div class="cd-container" :class="{ 'rotating': isPlaying }">
-                  <img src="/images/cd.webp" alt="CD" class="cd-image">
+                  <img src="../../images/cd.webp" alt="CD" class="cd-image">
                 </div>
                 <div class="player-info">
                   <div class="player-title">
