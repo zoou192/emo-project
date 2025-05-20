@@ -4,11 +4,11 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/',
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': path.resolve(__dirname, './src'),
+      'vue': 'vue/dist/vue.esm-bundler.js'
     }
   },
   server: {
@@ -23,20 +23,18 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: {
           'vue': ['vue'],
+          'vue-router': ['vue-router'],
           'element-plus': ['element-plus']
         }
       }
     }
+  },
+  optimizeDeps: {
+    include: ['vue', 'vue-router']
   }
 })

@@ -8,9 +8,9 @@ const activeTab = ref('chat')
 const selectedScenario = ref('life') // 默认选中生活场景
 
 const scenarios = [
-  { id: 'life', name: '生活琐事', icon: '../../images/生活.svg' },
-  { id: 'social', name: '人际交往', icon: '../../images/社交.svg' },
-  { id: 'work', name: '工作日常', icon: '../../images/工作.svg' }
+  { id: 'life', name: '生活琐事', icon: '../../public/images/生活.svg' },
+  { id: 'social', name: '人际交往', icon: '../../public/images/社交.svg' },
+  { id: 'work', name: '工作日常', icon: '../../public/images/工作.svg' }
 ]
 
 const switchTab = (tab) => {
@@ -33,7 +33,7 @@ const currentStream = ref(null)
 const personalityResult = ref({
   name: '元气魔法师',
   description: '聚会时用幽默打破沉默，拉近关系',
-  avatar: '../../images/yqmfs.png',
+  avatar: '../../public/images/yqmfs.png',
   traits: ['聚会能量', '社交魔法', '幽默化解', '亲密关系']
 })
 const userAnswers = ref(null)
@@ -1452,7 +1452,7 @@ watch(messages, (newVal) => {
           :disabled="isThinking || !newMessage.trim()"
         >
           <img 
-            :src="inputActive ? '../../images/send_select.svg' : '../../images/send_normal.svg'"
+            :src="inputActive ? '../../public/images/send_select.svg' : '../../public/images/send_normal.svg'"
             alt="发送"
             style="width: 24px; height: 24px;"
           >

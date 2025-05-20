@@ -8,7 +8,7 @@ const characters = ref([
   {
     id: 1,
     name: 'Be Whatever You Want',
-    image: '../../images/character1.png',
+    image: '../../public/images/character1.png',
     difficulty: '简单',
     unlocked: true,
     description: '突破自我，展现真实的你',
@@ -17,7 +17,7 @@ const characters = ref([
   {
     id: 2,
     name: 'Fill Up With Knowledge',
-    image: '../../images/character2.png',
+    image: '../../public/images/character2.png',
     difficulty: '中等',
     unlocked: true,
     description: '获取知识，提升自我',
@@ -26,7 +26,7 @@ const characters = ref([
   {
     id: 3,
     name: 'Share your Emotions',
-    image: '../../images/character3.png',
+    image: '../../public/images/character3.png',
     difficulty: '困难',
     unlocked: true,
     description: '学会表达，分享情感',
